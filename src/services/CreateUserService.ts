@@ -1,5 +1,6 @@
 // tudo que for relacionado a criação de Usuários
 
+import { getCustomRepository } from 'typeorm'
 import { UsersRepositories } from "../repositories/UsersRepositories";
 
 interface IUserRequest{
@@ -10,13 +11,13 @@ interface IUserRequest{
 
 class CreateUserService {
   async execute({ name, email, admin }: IUserRequest){
-    const usersRepository = new UsersRepositories();
+    const usersRepository = getCustomRepository(UsersRepositories)
 
     if (!email){
       throw new Error("Email Incorrect");
     }
 
-    // Verificando se o Usuario Existe
+    // Verificando se o Usuário Existe
     const userAlreadyExists = await usersRepository.findOne({ email }); 
 
     // se Existir Vou Forçar esse Erro

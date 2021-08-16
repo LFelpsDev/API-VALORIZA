@@ -1,19 +1,14 @@
 import "reflect-metadata"
 import express from 'express';
+import { router } from './routes'
 
 import "./database";
-// @types/express
+
 const app = express();
 
-app.get('/testing', (request, response) => {
-  // Request => Entrando
-  // Response => Saindo
-  return response.send("Ola Mundo Diego Trem bala")
-})
+app.use(express.json()); // por padrão ele pega vários tipos, e causa alguns erros na aplicação por isso, é preciso indicar o tipo que quero.
 
-app.post('/test-post', (request, response) => {
-  return response.send('Ola mundo Nlw, Método Post')
-})
+app.use(router); // todas minhas rotas vão fazer parte do meu Projeto
 
 // http://localhost:3000
 app.listen(3000, () => console.log('Server Running'))
