@@ -25,11 +25,6 @@ export class CreateUsers1629127808030 implements MigrationInterface {
             default: false, //se eu não passar nenhuma informação, quero que por padrão o admin seja falso
           },
           {
-            name: "password",
-            type: "varchar",
-            isPrimary: true, // chave primaria
-          },
-          {
             name: "created_at",
             type: "timestamp",
             default: "now()",
