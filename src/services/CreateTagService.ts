@@ -12,7 +12,7 @@ class CreateTagService {
     if(!name){
       throw new Error('Incorrect Name!')
     }
-
+    // SELECT * FROM TAGS WHERE NAME = 'name'
     const tagAlreadyExists = await tagsRepository.findOne({
       name
     })
@@ -20,6 +20,15 @@ class CreateTagService {
     if (tagAlreadyExists){
       throw new Error("Name Already Exists");
     }
+
+    const tag = tagsRepository.create({
+      name,
+    })
+
+    await tagsRepository.save(tag)
+    
+    return tag;
+    
   }
 }
 
