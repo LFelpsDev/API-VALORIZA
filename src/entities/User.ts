@@ -8,6 +8,8 @@ import {
 
 import { v4 as uuid } from 'uuid'; // para pegar vários números aleatórios
 
+import { Exclude } from "class-transformer";
+
 // entidade Usuário, temos uma tabela Usuário
 
 // Entidade < - > ORM < - > BD (users)
@@ -27,6 +29,7 @@ class User {
   @Column()
   admin: boolean;
 
+  @Exclude()
   @Column()
   password: string;
 
