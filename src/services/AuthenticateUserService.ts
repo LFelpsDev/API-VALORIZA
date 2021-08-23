@@ -29,7 +29,7 @@ class AuthenticationUserService {
       {
         email: user.email,
       },
-      process.env.TOKEN_SIGN,
+      "95fea8c1dfb01c7edeea24c52d1531ac",
       {
         subject: user.id,
         expiresIn: "1d",
